@@ -7,13 +7,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
 
+//DICModule存储功能，一个功能由多个指令构成。
 public class DICModule {
 
     //存储指令用的列表
     private final ArrayList<DICCommand> commandList = new ArrayList<>();
-
-    //变量池
-    private HashMap<String, Object> objectPool;
 
     //触发关键词(正则表达式)
     private String triggerWord;
@@ -22,8 +20,8 @@ public class DICModule {
         return triggerWord;
     }
 
-    public HashMap<String, Object> getObjectPool() {
-        return objectPool;
+    public ArrayList<DICCommand> getCommandList() {
+        return commandList;
     }
 
     public DICModule(String moduleSource) {
@@ -34,23 +32,12 @@ public class DICModule {
         commands[0] = null;
         for (String commandSource : commands) {
             if (commandSource == null) continue;
-            commandList.add(new DICCommand(this,commandSource));
+            commandList.add(new DICCommand(commandSource));
         }
     }
 
-    public void begin() {
-        objectPool = new HashMap<>();
-    }
 
-    public void invoke(MessageEvent event) {
-        for (DICCommand command : commandList) {
-            command.invoke(event);
-        }
+    public DICSession createSession(GroupMessageEvent event) {
+        return new DICSession(event,this);
     }
-
-    public void close() {
-        objectPool.clear();
-        objectPool = null;
-    }
-    
 }

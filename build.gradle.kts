@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "com.kagg886.miraidic"
-version = "0.0.1"
+version = "0.0.2"
 
 repositories {
     maven("https://maven.aliyun.com/repository/public")

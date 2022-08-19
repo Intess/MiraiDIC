@@ -1,12 +1,12 @@
 package com.kagg886.miraidic.function.core;
 
 import com.kagg886.miraidic.function.AbstractFunction;
-import com.kagg886.miraidic.helper.DICModule;
+import com.kagg886.miraidic.helper.DICSession;
 
 public class putVar implements AbstractFunction {
     @Override
     //name input
-    public void hook(DICModule module, String[] args) {
+    public void hook(DICSession module, String[] args) {
         module.getObjectPool().put(args[0], args[1]);
     }
 

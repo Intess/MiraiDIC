@@ -30,7 +30,7 @@ public final class MiraiDIC extends JavaPlugin {
     public MiraiLogger logger = getLogger();
 
     private MiraiDIC() {
-        super(new JvmPluginDescriptionBuilder("com.kagg886.miraidic", "0.0.1")
+        super(new JvmPluginDescriptionBuilder("com.kagg886.miraidic", "0.0.2")
                 .name("MiraiDIC")
                 .author("kagg886")
                 .build());

@@ -16,9 +16,7 @@ public class DICMessageListener extends SimpleListenerHost {
         for (DICFile file : MiraiDIC.INSTANCE.dicList) {
             for (DICModule module : file.getModules()) {
                 if (event.getMessage().contentToString().matches(module.getTriggerWord())) {
-                    module.begin();
-                    module.invoke(event);
-                    module.close();
+                    module.createSession(event).invoke();
                 }
             }
         }
